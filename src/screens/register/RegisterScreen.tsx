@@ -5,7 +5,7 @@ import { AuthScreenNavigationProp } from '../../navigation/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../redux/slices/authSlice';
 import { RootState } from '../../redux/store';
-import { Snackbar } from 'react-native-paper';
+import CommonSnackbar from '../../components/Snackbar';
 
 const RegisterScreen = () => {
     const [form, setForm] = useState({
@@ -111,20 +111,7 @@ const RegisterScreen = () => {
                 Already have an account? Login
             </Text>
 
-            <Snackbar
-                visible={snackVisible}
-                onDismiss={() => setSnackVisible(false)}
-                action={{
-                    label: 'OK',
-                    onPress: () => {
-                        if (snackMessage === 'Registration successful!') {
-                            navigation.navigate('Login');
-                        }
-                    }
-                }}
-            >
-                {snackMessage}
-            </Snackbar>
+            <CommonSnackbar message={snackMessage} visible={snackVisible} onDismiss={() => setSnackVisible(false)} />
         </View>
     );
 };

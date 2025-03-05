@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { AuthScreenNavigationProp } from '../../navigation/types';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { Snackbar } from 'react-native-paper';
+import CommonSnackbar from '../../components/Snackbar';
 
 const styles = StyleSheet.create({
     container: { flex: 1, justifyContent: 'center', padding: 20 },
@@ -68,13 +68,7 @@ const LoginScreen = () => {
                 Don't have an account? Register
             </Text>
 
-            <Snackbar
-                visible={snackVisible}
-                onDismiss={() => setSnackVisible(false)}
-                action={{ label: 'OK' }}
-            >
-                {snackMessage}
-            </Snackbar>
+            <CommonSnackbar message={snackMessage} visible={snackVisible} onDismiss={() => setSnackVisible(false)} />
         </View>
     );
 };

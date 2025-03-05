@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { State } from 'react-native-gesture-handler';
 
 interface User {
-    name: string | null
+    name: string
     email: string
     password: string
 }
