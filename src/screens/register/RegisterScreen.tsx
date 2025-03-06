@@ -5,7 +5,7 @@ import { AuthScreenNavigationProp } from '../../navigation/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../redux/slices/authSlice';
 import { RootState } from '../../redux/store';
-import CommonSnackbar from '../../components/Snackbar';
+import CommonSnackbar from '../../components/CommonSnackbar';
 
 const RegisterScreen = () => {
     const [form, setForm] = useState({

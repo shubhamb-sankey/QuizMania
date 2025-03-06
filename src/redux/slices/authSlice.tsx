@@ -44,6 +44,8 @@ const authSlice = createSlice({
                 state.isAuthenticated = true;
                 state.user = action.payload;
                 console.log('Login successful!');
+                // console.log(`${state.user} is the user`);
+                // console.log(`${action.payload.name} is the user`);
             } else {
                 console.log('User not registered!');
             }
@@ -51,6 +53,8 @@ const authSlice = createSlice({
         logout: (state) => {
             state.isAuthenticated = false;
             state.user = null;
+            console.log('Logout Success');
+            console.log(`${state.user} is the user`);
         },
     },
 });

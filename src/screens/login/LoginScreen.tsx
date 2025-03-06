@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AuthScreenNavigationProp } from '../../navigation/types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import CommonSnackbar from '../../components/Snackbar';
+import CommonSnackbar from '../../components/CommonSnackbar';
+import { login } from '../../redux/slices/authSlice';
 
 const styles = StyleSheet.create({
     container: { flex: 1, justifyContent: 'center', padding: 20 },
@@ -19,6 +20,7 @@ const LoginScreen = () => {
     const [password, setPassword] = useState('');
     const [snackVisible, setSnackVisible] = useState(false);
     const [snackMessage, setSnackMessage] = useState('');
+    const dispatch = useDispatch();
 
     const navigation = useNavigation<AuthScreenNavigationProp>();
     const registeredUsers = useSelector((state: RootState) => state.auth.registeredUsers);
@@ -39,6 +41,7 @@ const LoginScreen = () => {
             setSnackMessage('Incorrect password');
         } else {
             setSnackMessage('Login successful!');
+            dispatch(login(user)); // Saving the state 
             setTimeout(() => navigation.navigate('Dashboard'), 2000);
         }
 
